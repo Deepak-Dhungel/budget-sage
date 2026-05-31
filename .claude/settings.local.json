@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3)",
+      "Bash(npm install *)",
+      "Bash(npx prisma *)",
+      "Bash(node -e \"const pkg = require\\('./package.json'\\); console.log\\('@clerk/nextjs:', pkg.dependencies['@clerk/nextjs']\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@clerk/nextjs/package.json'\\).version\\)\")"
+    ]
+  }
+}
