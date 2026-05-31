@@ -5,7 +5,9 @@
       "Bash(npm install *)",
       "Bash(npx prisma *)",
       "Bash(node -e \"const pkg = require\\('./package.json'\\); console.log\\('@clerk/nextjs:', pkg.dependencies['@clerk/nextjs']\\)\")",
-      "Bash(node -e \"console.log\\(require\\('./node_modules/@clerk/nextjs/package.json'\\).version\\)\")"
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@clerk/nextjs/package.json'\\).version\\)\")",
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\('@clerk/nextjs:', p.dependencies['@clerk/nextjs']\\)\")",
+      "Bash(awk '{print $9}')"
     ]
   }
 }

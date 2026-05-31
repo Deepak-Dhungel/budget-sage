@@ -95,7 +95,7 @@ All required env variables are listed in .env.local at the project root.
 Never hardcode any of these values — always use process.env.VARIABLE_NAME.
 The actual values are in .env.local which is gitignored and never committed.
 
-Required variables:
+# Required variables
 
 - DATABASE_URL → Supabase Transaction Pooler connection string
 - DIRECT_URL → Supabase Direct Connection string
