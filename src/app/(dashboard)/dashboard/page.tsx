@@ -1,14 +1,16 @@
-import { currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { prisma } from "@/lib/prisma";
 
 export default async function DashboardPage() {
-  const user = await currentUser();
+  const { userId: clerkId } = await auth();
+  if (!clerkId) redirect("/sign-in");
 
-  if (!user) {
-    redirect("/sign-in");
-  }
+  const user = await prisma.user.findUnique({
+    where: { clerkId },
+  });
 
-  const email = user.emailAddresses[0]?.emailAddress ?? "unknown";
+  if (!user) redirect("/onboarding");
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50">
@@ -16,7 +18,7 @@ export default async function DashboardPage() {
         <h1 className="text-2xl font-semibold text-zinc-900">
           Welcome to BudgetSage
         </h1>
-        <p className="mt-2 text-zinc-500">Signed in as {email}</p>
+        <p className="mt-2 text-zinc-500">Signed in as {user.email}</p>
       </div>
     </div>
   );
